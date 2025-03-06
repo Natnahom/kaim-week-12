@@ -1,16 +1,35 @@
-import talib
 import plotly.graph_objects as go
+import numpy as np
 
 # Calculate technical indicators
 def calculate_indicators(stock_data):
     """
-    Calculate technical indicators using TA-Lib.
+    Calculate technical indicators without TA-Lib.
     """
-    stock_data['SMA_20'] = talib.SMA(stock_data['Close'], timeperiod=20)
-    stock_data['RSI'] = talib.RSI(stock_data['Close'], timeperiod=14)
-    stock_data['MACD'], stock_data['MACD_signal'], stock_data['MACD_hist'] = talib.MACD(
-        stock_data['Close'], fastperiod=12, slowperiod=26, signalperiod=9)
-    stock_data['ATR'] = talib.ATR(stock_data['High'], stock_data['Low'], stock_data['Close'], timeperiod=14)
+    # Simple Moving Average (SMA)
+    stock_data['SMA_20'] = stock_data['Close'].rolling(window=20).mean()
+
+    # Relative Strength Index (RSI)
+    delta = stock_data['Close'].diff()
+    gain = (delta.where(delta > 0, 0)).rolling(window=14).mean()
+    loss = (-delta.where(delta < 0, 0)).rolling(window=14).mean()
+    rs = gain / loss
+    stock_data['RSI'] = 100 - (100 / (1 + rs))
+
+    # Moving Average Convergence Divergence (MACD)
+    stock_data['EMA_12'] = stock_data['Close'].ewm(span=12, adjust=False).mean()
+    stock_data['EMA_26'] = stock_data['Close'].ewm(span=26, adjust=False).mean()
+    stock_data['MACD'] = stock_data['EMA_12'] - stock_data['EMA_26']
+    stock_data['MACD_signal'] = stock_data['MACD'].ewm(span=9, adjust=False).mean()
+    stock_data['MACD_hist'] = stock_data['MACD'] - stock_data['MACD_signal']
+
+    # Average True Range (ATR)
+    stock_data['H-L'] = stock_data['High'] - stock_data['Low']
+    stock_data['H-PC'] = abs(stock_data['High'] - stock_data['Close'].shift(1))
+    stock_data['L-PC'] = abs(stock_data['Low'] - stock_data['Close'].shift(1))
+    stock_data['TR'] = stock_data[['H-L', 'H-PC', 'L-PC']].max(axis=1)
+    stock_data['ATR'] = stock_data['TR'].rolling(window=14).mean()
+
     return stock_data
 
 # Visualize stock data with indicators
