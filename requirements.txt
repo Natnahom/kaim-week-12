@@ -5,5 +5,4 @@ seaborn
 wordcloud
 textblob
 scikit-learn
-ta-lib
 plotly
