@@ -2,14 +2,15 @@ import pandas as pd
 from statsmodels.tsa.stattools import grangercausalitytests
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
+# Initialize the VADER sentiment analyzer outside the function
+analyzer = SentimentIntensityAnalyzer()
 
 # Sentiment analysis with VADER
-def analyze_sentiment_vader(headline):
+def analyze_sentiment_vader(headlines):
     """
-    Analyze sentiment using VADER.
+    Analyze sentiment using VADER for a list of headlines.
     """
-    analyzer = SentimentIntensityAnalyzer()
-    return analyzer.polarity_scores(headline)['compound']
+    return [analyzer.polarity_scores(headline)['compound'] for headline in headlines]
 
 # Granger causality test
 def granger_causality_test(sentiment_scores, stock_returns):
