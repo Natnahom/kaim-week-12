@@ -182,6 +182,80 @@ RSI Chart: Plots the RSI values to identify overbought or oversold conditions.
 
 MACD Chart: Plots the MACD line and signal line to identify momentum trends.
 
+# Task 3: Correlation Between News Sentiment and Stock Movement
+
+## Overview
+This task focuses on analyzing the correlation between financial news sentiment and stock price movements. The goal is to:
+
+Align news sentiment data with stock price data by date.
+
+Perform sentiment analysis on news headlines.
+
+Calculate daily stock returns.
+
+Determine the correlation between news sentiment and stock price movements.
+
+## Setup Instructions
+
+1. Clone the Repository
+
+2. Set Up the Python Environment
+Create a virtual environment and install the required dependencies:
+
+- `venv\Scripts\activate`
+
+3. Install Required Libraries
+The required libraries are listed in requirements.txt. Install them using:
+
+- pip install -r requirements.txt
+
+## Usage
+1. Running the Correlation Analysis Script
+The main script for Task 3 is located in src/task3_correlation_analysis.py. To run the script:
+
+- Follow the correlationAnalysis.ipynb
+
+2. Key Functionalities
+The script performs the following analyses:
+
+- Data Alignment:
+
+Align news sentiment data with stock price data by date.
+
+- Sentiment Analysis:
+
+Perform sentiment analysis on news headlines using TextBlob and VADER.
+
+- Stock Returns Calculation:
+
+Calculate daily stock returns based on closing prices.
+
+- Correlation Analysis:
+
+Compute the Pearson correlation coefficient between sentiment scores and stock returns.
+
+3. Output
+The script generates the following outputs:
+
+- Plots: Saved in the notebooks/ directory.
+
+- Correlation Results: Printed in the console.
+
+## Detailed Analysis
+1. Data Alignment
+News sentiment data and stock price data are aligned by date to ensure each news item matches the corresponding stock trading day.
+
+2. Sentiment Analysis
+- TextBlob: Used for basic sentiment analysis.
+
+- VADER: Used for financial sentiment analysis, providing more accurate sentiment scores for financial text.
+
+3. Stock Returns Calculation
+Daily stock returns are calculated as the percentage change in closing prices.
+
+4. Correlation Analysis
+The Pearson correlation coefficient is calculated to measure the strength and direction of the relationship between sentiment scores and stock returns.
+
 ## Author
 - Natnahom Asfaw
 - 06/03/2025

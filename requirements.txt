@@ -6,3 +6,5 @@ wordcloud
 textblob
 scikit-learn
 plotly
+statsmodels
+vaderSentiment
