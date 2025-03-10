@@ -4,16 +4,17 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import mean_squared_error
 from sklearn.decomposition import LatentDirichletAllocation
 from sklearn.feature_extraction.text import CountVectorizer
-from transformers import pipeline
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
-# Advanced Sentiment Analysis with FinBERT
-def analyze_sentiment_finbert(headline):
+# Initialize VADER Sentiment Analyzer
+analyzer = SentimentIntensityAnalyzer()
+
+def analyze_sentiment_vader(headline):
     """
-    Perform sentiment analysis using FinBERT.
+    Perform sentiment analysis using VADER.
     """
-    finbert = pipeline("text-classification", model="yiyanghkust/finbert-tone")
-    result = finbert(headline)
-    return result[0]['label'], result[0]['score']
+    sentiment_score = analyzer.polarity_scores(headline)
+    return sentiment_score['compound'], sentiment_score
 
 # Topic Modeling with LDA
 def perform_topic_modeling(data, num_topics=5):

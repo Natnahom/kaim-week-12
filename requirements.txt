@@ -9,3 +9,4 @@ plotly
 statsmodels
 vaderSentiment
 tensorflow
+tf-keras
