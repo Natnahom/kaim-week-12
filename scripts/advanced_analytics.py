@@ -40,7 +40,7 @@ def build_predictive_model(data):
     """
     Build a predictive model for stock price movements.
     """
-    features = data[['sentiment', 'SMA_20', 'RSI', 'MACD']]
+    features = data[['sentiment', 'finbert_sentiment']]
     target = data['daily_return']
     X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)
     
@@ -53,21 +53,3 @@ def build_predictive_model(data):
     mse = mean_squared_error(y_test, y_pred)
     print(f"Model MSE: {mse}")
     return grid_search.best_estimator_
-
-# # Main function
-# def main():
-#     # Load data
-#     data = pd.read_csv("merged_data.csv")
-    
-#     # Advanced Sentiment Analysis
-#     data['finbert_sentiment'], data['finbert_score'] = zip(*data['headline'].apply(analyze_sentiment_finbert))
-    
-#     # Topic Modeling
-#     lda_model, vectorizer = perform_topic_modeling(data)
-    
-#     # Event Detection
-#     keywords = ['earnings', 'merger', 'acquisition', 'fda approval']
-#     data = detect_market_events(data, keywords)
-    
-#     # Predictive Modeling
-#     model = build_predictive_model(data)
