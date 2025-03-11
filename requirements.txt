@@ -10,3 +10,4 @@ statsmodels
 vaderSentiment
 tensorflow
 tf-keras
+streamlit

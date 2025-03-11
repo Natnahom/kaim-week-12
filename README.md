@@ -340,6 +340,51 @@ Features: Sentiment scores, technical indicators (e.g., SMA, RSI, MACD, sentimen
 
 - Evaluation: Models were evaluated using cross-validation and hyperparameter tuning.
 
+# Task 5: Financial News and Stock Analysis Dashboard
+
+## Overview
+
+This project is a Streamlit application that provides an interactive dashboard for analyzing financial news and stock prices. Users can explore sentiment trends, stock price movements, and correlations between sentiment and stock returns. The application also allows users to filter data based on date ranges and stock symbols.
+
+## Features
+
+- **Sentiment Analysis**: Visualize sentiment trends over time using financial news headlines.
+- **Stock Price Movements**: Display stock price changes over time using bar, area, or scatter plots.
+- **Correlation Heatmap**: Analyze the correlation between sentiment scores and stock returns.
+- **Stock Performance Comparison**: Compare multiple stocks simultaneously.
+- **Data Download**: Download filtered data as a CSV file for further analysis.
+- **User-Friendly Interface**: Interactive filters for a better user experience.
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- streamlit, plotly and pandas
+
+### Installation
+
+1. Clone the repository:
+
+Create a virtual environment (optional but recommended):
+- python -m venv venv
+- `venv\Scripts\activate`
+
+2. Install the required packages:
+pip install -r requirements.txt
+
+3. Running the App
+To run the Streamlit app, use the following command:
+
+- streamlit run app/dashboard.py
+Replace app/dashboard.py with the path to your dashboard script if it's different.
+
+## Usage
+- Filters: Use the sidebar to filter the data by date range, stock symbol, and sentiment score.
+- Visualizations: Explore various plots that display sentiment trends, stock price movements, and correlations.
+- Download Data: After filtering, you can download the displayed data as a CSV file.
+
 ## Author
 - Natnahom Asfaw
 - 06/03/2025
