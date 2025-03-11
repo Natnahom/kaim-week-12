@@ -385,6 +385,91 @@ Replace app/dashboard.py with the path to your dashboard script if it's differen
 - Visualizations: Explore various plots that display sentiment trends, stock price movements, and correlations.
 - Download Data: After filtering, you can download the displayed data as a CSV file.
 
+# Task 6: Stock Price Prediction and Sentiment Analysis
+
+## Overview
+This project implements a Flask API for stock price prediction based on sentiment analysis and a Dash dashboard that provides an interactive user interface. Users can input sentiment scores and headlines to receive predictions and sentiment analysis results.
+
+## Features
+
+- Predict stock price movements based on user-provided sentiment scores.
+- Analyze the sentiment of headlines using FinBERT.
+- Interactive dashboard for user inputs and visualization of results.
+- Responsive design that adapts to different screen sizes.
+
+## Technologies Used
+
+- **Flask**: Web framework for building the API.
+- **Dash**: Framework for building the interactive dashboard.
+- **Plotly**: Library for creating interactive visualizations.
+- **Bootstrap**: CSS framework for styling the dashboard.
+- **Python**: Programming language used for the application.
+
+## Setup
+
+1. Clone the repository:
+
+Create a virtual environment and activate it:
+
+- python -m venv venv
+- source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+
+2. Install the required packages:
+
+- pip install -r requirements.txt
+
+3. Start the Flask API:
+
+- python api/app.py
+Open a new terminal, navigate to the dashboard directory, and start the Dash app:
+- cd api/dashDashboard
+- python dash_app.py
+
+### API Endpoints
+Prediction Endpoint
+URL: /predict
+Method: POST
+Request Body:
+
+{
+    "features": [0.75, 0.65]  // Example sentiment and FinBERT sentiment values
+}
+
+Response:
+
+{
+    "prediction": 0.9528  // Predicted stock price movement
+}
+
+### Sentiment Analysis Endpoint
+URL: /sentiment
+Method: POST
+Request Body:
+{
+    "headline": "The company reported strong earnings growth this quarter."
+}
+
+Response:
+
+{
+    "score": {
+        "compound": 0.0,
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0
+    },
+    "sentiment": 0.0
+}
+
+## Dash Dashboard
+The Dash dashboard provides an interactive interface where users can input sentiment values and headlines. It displays the prediction results and sentiment analysis in an easy-to-read format.
+
+- How to Use the Dashboard
+Open your web browser and go to http://127.0.0.1:8050/.
+Input the sentiment values and FinBERT sentiment.
+Enter a headline for sentiment analysis.
+Click the respective buttons to get predictions and sentiment results.
+
 ## Author
 - Natnahom Asfaw
 - 06/03/2025
