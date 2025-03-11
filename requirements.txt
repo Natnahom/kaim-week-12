@@ -11,3 +11,5 @@ vaderSentiment
 tensorflow
 tf-keras
 streamlit
+dash
+dash-bootstrap-components
